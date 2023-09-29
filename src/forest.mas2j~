@@ -1,0 +1,14 @@
+MAS forest {
+
+    infrastructure: Centralised
+
+	//Change this to carry out the different test environments (Forest1, Forest2, etc...)
+	//You can even make your own if you wish!
+    environment: Forest1
+
+	 
+	agents: hero; 
+			goblin; 
+	
+	//Once ready, click the "play" button, and the MAS will run
+}
