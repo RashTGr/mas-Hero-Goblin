@@ -2,7 +2,9 @@ MAS forest {
 
     infrastructure: Centralised
 
+	environment: Forest1
 	
+	agents: hero; goblin;
 
 	
 }
