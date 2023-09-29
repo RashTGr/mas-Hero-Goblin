@@ -1,0 +1,13 @@
+// Initial goals
+!run.
+!exploreForest.
+
++!run
+	:true
+	<- .print("I've taken on the role of a forest-exploring hero!").
+	
+
++!exploreForest : not coin(hero) & not vase(hero) & not gem(hero) & not pos(X,7,7)
+	<- next(slot); 
+	!exploreForest.
+!exploreForest.	
