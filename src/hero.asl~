@@ -1,3 +1,7 @@
+//Hero is at the position of agent P (variable), if agent P's position is identical to Hero's position 
+at(P) :- pos(P,X,Y) & pos(hero,X,Y).
+
+
 // Initial goals
 !run.
 !exploreForest.
@@ -11,10 +15,49 @@
 	
 
 // Constantly exploring forest environment
-+!exploreForest : true & not pos(X,7,7)
++!exploreForest : not (coin) & not pos(X,7,7) & not vase(hero) & not gem(hero)
 	<- next(slot); 
 	!exploreForest.
+!exploreForest.
+	
+	
+// Plan for a coin
++coin(hero) : not .desire(carry_to(goblin)) & not hero(vase) & not hero(gem)
+	<- !carry_to(goblin). 
+	
++!carry_to(G)
+	<- 
+		?pos(hero,X,Y);
+		-+pos(lastLocation,X,Y);
+		
+		!ensurePickUp(item);
+		
+		!takeTo(item,G);
+		
+		!backTo(lastLocation);
+
+		!exploreForest.
+
+		
++!ensurePickUp(item) : coin(hero) & not vase(hero) & not gem(hero)
+	<- pick(coin);
+	!ensurePickUp(item). // Recursive call
+
+	
+	+!takeTo(item,G) : true & hero(coin)
+		<- !backTo(G);
+		.print("Here you are!");
+		drop(coin). // Element-related action from the environment: drop coin
+
 
 // Stop and print message at the end of grid
 +!exploreForest : pos(hero,7,7)
-	<- .print("End of environment!").
+	<- .print("End of environment!").	
+		
++!ensurePickUp(_).
++!exploreForest.
+
++!backTo(G) : at(G).
++!backTo(G) <- ?pos(G,X,Y); // Get the position to move towards
+	move_towards(X,Y); // Move towards the specified location
+	!backTo(G).

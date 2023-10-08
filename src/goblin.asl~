@@ -9,4 +9,3 @@
 
 +gem(goblin) : true <- stash(gem);
 						.print("Thank you for the gem!").
-						
