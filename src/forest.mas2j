@@ -1,8 +1,9 @@
 MAS forest {
 
     infrastructure: Centralised
-
-	environment: Forest1
+	
+	// Change environment to Forest2, 3... for different scenarios
+	environment: Forest3
 	
 	agents: hero; goblin;
 

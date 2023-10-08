@@ -25,13 +25,16 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 // Plan for a coin
 +coin(hero) : not .desire(carry_to(goblin)) & not hero(vase) & not hero(gem)
 	<- !carry_to(goblin). 
-	
+
+// Plan for a vase	
 +vase(hero) : not .desire(carry_to(goblin)) & not hero(coin) & not hero(gem)
 	<- !carry_to(goblin). 	
 
+// Plan for a gem	
 +gem(hero) : not .desire(carry_to(goblin)) & not hero(coin) & not hero(vase)
 	<- !carry_to(goblin). 
-	
+
+// Plan to carry an item to the goblin	
 +!carry_to(G)
 	<- 
 		?pos(hero,X,Y);
@@ -45,7 +48,7 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 
 		!exploreForest.
 
-		
+// To ensure picking up items		
 +!ensurePickUp(item) : coin(hero) & not vase(hero) & not gem(hero)
 	<- pick(coin);
 	!ensurePickUp(item). // Recursive call
@@ -83,9 +86,12 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 +!exploreForest : pos(hero,7,7)
 	<- .print("End of environment!").	
 		
+// Recursive calls	
 +!ensurePickUp(_).
-+!exploreForest.
++!exploreForest. 
 
+// Plan to be at a specified location, or
+// to move towards a specified location
 +!backTo(G) : at(G).
 +!backTo(G) <- ?pos(G,X,Y); // Get the position to move towards
 	move_towards(X,Y); // Move towards the specified location
