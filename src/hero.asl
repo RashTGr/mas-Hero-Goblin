@@ -15,6 +15,7 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 	
 
 // Constantly exploring forest environment
+@lg[atomic] // to ensure the entire plan executes atomically 
 +!exploreForest : not pos(X,7,7) & not coin(hero) & not vase(hero) & not gem(hero)
 	<- next(slot); 
 	!exploreForest.
@@ -52,7 +53,7 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 	
 	+!takeTo(item,G) : true & hero(coin)
 		<- !backTo(G);
-		.print("Here you are!");
+		.print("Hey, Goblin. I've a COIN for you!");
 		drop(coin). // Element-related action from the environment: drop coin
 
 
@@ -63,7 +64,7 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 	
 	+!takeTo(item,G) : true & hero(vase)
 		<- !backTo(G);
-		.print("Here you are!");
+		.print("Hey, Goblin. I've a VASE for you!");
 		drop(vase). // Element-related action from the environment: drop coin
 		
 
@@ -74,7 +75,7 @@ at(P) :- pos(P,X,Y) & pos(hero,X,Y).
 	
 	+!takeTo(item,G) : true & hero(gem)
 		<- !backTo(G);
-		.print("Here you are!");
+		.print("Hey, Goblin. I've a GEM for you!");
 		drop(gem). // Element-related action from the environment: drop coin		
 
 		
