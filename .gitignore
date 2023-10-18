@@ -6,3 +6,4 @@
 
 # Ignore local config files of IDE
 .idea/
+*.iml
