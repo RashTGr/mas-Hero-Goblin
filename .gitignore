@@ -3,3 +3,6 @@
 
 # Ignore files with tilde (~) at the end
 *~
+
+# Ignore local config files of IDE
+.idea/
