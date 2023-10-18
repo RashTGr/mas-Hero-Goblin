@@ -23,10 +23,10 @@ There is only one `goblin` agent in the game. In order to stash things, the `gob
 The game environment consists of a grid, and the hero agent starts at a specific position. Each forest scenario presents a unique set of challenges and opportunities for exploration.
 
 ## Screenshots
-![Game Environment](forest-env.png)
+![Game Environment](src/resources/forest-env.png)
 _**Figure 1:** A screenshot of the game environment._
 
-![Log Console](mas-console.png)
+![Log Console](src/resources/mas-console.png)
 _**Figure 2:** A screenshot of the log console displaying actions and messages._
 
 
