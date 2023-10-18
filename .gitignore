@@ -1,0 +1,5 @@
+# Ignore compiled Java classes
+*.class
+
+# Ignore files with tilde (~) at the end
+*~
