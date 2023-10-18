@@ -24,10 +24,12 @@ The game environment consists of a grid, and the hero agent starts at a specific
 
 ## Screenshots
 <img src="src/resources/forest-env.png" alt="Game Environment" width="330"/>
+
 _**Figure 1:** A screenshot of the game environment._
 
 
 <img src="src/resources/mas-console.png" alt="Game Environment" width="330"/>
+
 _**Figure 2:** A screenshot of the log console displaying actions and messages._
 
 
